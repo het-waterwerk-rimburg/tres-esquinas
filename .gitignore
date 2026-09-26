@@ -8,3 +8,9 @@ Thumbs.db
 
 # vercel
 .vercel
+
+# Claude Code / Codex project-local tooling (skills, agents, design-detector state)
+# — local AI-assistant config, not part of the website.
+.claude/
+.agents/
+.impeccable/
