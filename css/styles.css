@@ -1339,6 +1339,15 @@ h1 {
   color: rgba(44, 44, 42, 0.6);
 }
 
+.site-footer__brand span a {
+  color: var(--color-principal);
+  font-weight: 600;
+}
+
+.site-footer__brand span a:hover {
+  text-decoration: underline;
+}
+
 .site-footer__links {
   display: flex;
   flex-wrap: wrap;
