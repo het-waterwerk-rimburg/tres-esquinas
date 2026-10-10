@@ -1369,6 +1369,22 @@ h1 {
   color: rgba(44, 44, 42, 0.6);
 }
 
+/* Web agency credit: sits right under the copyright line, cancelling the
+   18px row gap and the 13px paragraph margin above it. */
+.site-footer__credit {
+  margin-top: -27px;
+}
+
+.site-footer__credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.site-footer__credit a:hover {
+  color: var(--color-principal);
+}
+
 /* ---------- 15. Scroll reveal (general-style.md §8.2–8.3) ------- */
 
 [data-reveal] {
