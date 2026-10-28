@@ -69,12 +69,11 @@
         "offers": [
           {
             "@type": "Offer",
-            "name": "Early Bird",
-            "price": "20",
+            "name": "Regular Ticket",
+            "price": "25",
             "priceCurrency": "EUR",
             "availability": "https://schema.org/InStock",
-            "validThrough": "2026-10-04T23:59:00+02:00",
-            "url": "https://buy.stripe.com/00wdR81S1f6e5rHczC4Rq0f"
+            "url": "https://buy.stripe.com/8x200i0NX9LU2fvdDG4Rq0i"
           },
           {
             "@type": "Offer",
@@ -757,26 +756,24 @@
           </p>
 
           <div class="ticket-grid stagger">
-            <!-- Early Bird -->
+            <!-- Regular -->
             <div class="ticket-card" data-reveal>
-              <span class="ticket-card__tag">Early Bird</span>
-              <p class="ticket-card__price">
-                <span class="ticket-card__price-was">€25</span> €20
-              </p>
+              <span class="ticket-card__tag">Regular Ticket</span>
+              <p class="ticket-card__price">€25</p>
               <p class="ticket-card__note">
-                Full package · limited-time price until 11 October
+                Full package: workshop + milonga with live music.
               </p>
               <div class="ticket-card__spacer"></div>
 
               <div class="privacy-row">
                 <input
                   type="checkbox"
-                  id="pp-earlybird"
+                  id="pp-regular"
                   data-privacy
                   required
-                  aria-describedby="hint-earlybird"
+                  aria-describedby="hint-regular"
                 />
-                <label for="pp-earlybird">
+                <label for="pp-regular">
                   I have read and accept the
                   <a
                     href="https://tangomj.nl/privacy-policy/"
@@ -793,13 +790,13 @@
                 type="button"
                 class="btn btn--primary btn--block"
                 data-checkout
-                data-checkout-url="https://buy.stripe.com/00wdR81S1f6e5rHczC4Rq0f"
-                aria-controls="pp-earlybird"
+                data-checkout-url="https://buy.stripe.com/8x200i0NX9LU2fvdDG4Rq0i"
+                aria-controls="pp-regular"
                 disabled
               >
                 Buy Ticket
               </button>
-              <p class="ticket-hint" id="hint-earlybird" role="status">
+              <p class="ticket-hint" id="hint-regular" role="status">
                 Accept the Privacy Policy to continue.
               </p>
             </div>
