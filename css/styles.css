@@ -365,6 +365,11 @@ h1 {
   gap: clamp(12px, 1.8vw, 22px);
 }
 
+.site-nav__list a,
+.site-nav .btn {
+  white-space: nowrap;
+}
+
 .site-nav__list a {
   font-size: 13px;
   font-weight: 600;
@@ -375,6 +380,23 @@ h1 {
 
 .site-nav__list a:hover {
   color: var(--color-principal);
+}
+
+/* Between the mobile menu and wide screens: hide the name next to the logo
+   so the longer Dutch/German menu fits on one line. */
+@media (min-width: 901px) and (max-width: 1180px) {
+  .site-header__brand span {
+    display: none;
+  }
+
+  .site-nav .btn {
+    padding-inline: 18px;
+  }
+
+  .site-nav,
+  .site-nav__list {
+    gap: 12px;
+  }
 }
 
 .lang-switch {
@@ -393,6 +415,17 @@ h1 {
 }
 
 .lang-switch__item.is-active {
+  color: var(--color-principal);
+}
+
+a.lang-switch__item {
+  color: rgba(44, 44, 42, 0.62);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.lang-switch__item:hover,
+a.lang-switch__item:focus-visible {
   color: var(--color-principal);
 }
 

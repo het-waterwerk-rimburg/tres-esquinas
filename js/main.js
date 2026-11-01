@@ -5,6 +5,29 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* Interface texts set from JS, per page language (<html lang>). */
+  var TEXT = {
+    en: {
+      openMenu: 'Open menu',
+      closeMenu: 'Close menu',
+      ready: 'Ready. This opens the ticket checkout.',
+      acceptPrivacy: 'Accept the Privacy Policy to continue.'
+    },
+    nl: {
+      openMenu: 'Menu openen',
+      closeMenu: 'Menu sluiten',
+      ready: 'Klaar. Hiermee open je de betaalpagina.',
+      acceptPrivacy: 'Accepteer het privacybeleid om verder te gaan.'
+    },
+    de: {
+      openMenu: 'Menü öffnen',
+      closeMenu: 'Menü schließen',
+      ready: 'Fertig. Hier geht es zur Ticketkasse.',
+      acceptPrivacy: 'Akzeptiere die Datenschutzerklärung, um fortzufahren.'
+    }
+  };
+  var t = TEXT[document.documentElement.lang] || TEXT.en;
+
   /* ---------- 1. Mobile navigation ---------------------------------- */
   (function nav() {
     var toggle = document.querySelector('[data-nav-toggle]');
@@ -16,7 +39,7 @@
     function setOpen(open) {
       menu.dataset.open = String(open);
       toggle.setAttribute('aria-expanded', String(open));
-      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      toggle.setAttribute('aria-label', open ? t.closeMenu : t.openMenu);
     }
 
     setOpen(false);
@@ -85,8 +108,8 @@
         btn.disabled = !ok;
         if (hint) {
           hint.textContent = ok
-            ? 'Ready. This opens the ticket checkout.'
-            : 'Accept the Privacy Policy to continue.';
+            ? t.ready
+            : t.acceptPrivacy;
         }
       }
 
