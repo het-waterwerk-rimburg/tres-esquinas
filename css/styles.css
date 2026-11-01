@@ -383,8 +383,8 @@ h1 {
 }
 
 /* Between the mobile menu and wide screens: hide the name next to the logo
-   so the longer Dutch/German menu fits on one line. */
-@media (min-width: 901px) and (max-width: 1180px) {
+   so the longer translated menus fit on one line. */
+@media (min-width: 901px) and (max-width: 1280px) {
   .site-header__brand span {
     display: none;
   }
@@ -396,6 +396,19 @@ h1 {
   .site-nav,
   .site-nav__list {
     gap: 12px;
+  }
+
+  .site-nav__list a {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  .lang-switch__item {
+    padding-inline: 4px;
+  }
+
+  .lang-switch__item:not(:last-child)::after {
+    margin-left: 6px;
   }
 }
 

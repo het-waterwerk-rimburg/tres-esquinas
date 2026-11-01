@@ -24,6 +24,12 @@
       closeMenu: 'Menü schließen',
       ready: 'Fertig. Hier geht es zur Ticketkasse.',
       acceptPrivacy: 'Akzeptiere die Datenschutzerklärung, um fortzufahren.'
+    },
+    fr: {
+      openMenu: 'Ouvrir le menu',
+      closeMenu: 'Fermer le menu',
+      ready: 'C’est prêt. Ce bouton ouvre la page de paiement.',
+      acceptPrivacy: 'Acceptez la politique de confidentialité pour continuer.'
     }
   };
   var t = TEXT[document.documentElement.lang] || TEXT.en;
