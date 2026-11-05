@@ -11,25 +11,37 @@
       openMenu: 'Open menu',
       closeMenu: 'Close menu',
       ready: 'Ready. This opens the ticket checkout.',
-      acceptPrivacy: 'Accept the Privacy Policy to continue.'
+      acceptPrivacy: 'Accept the Privacy Policy to continue.',
+      closedLead: 'Online ticket sales are closed',
+      closedMain: 'Tickets at the door on the day of the event',
+      closedHint: 'Tickets can no longer be bought online. You can buy them at the door on the day of the event.'
     },
     nl: {
       openMenu: 'Menu openen',
       closeMenu: 'Menu sluiten',
       ready: 'Klaar. Hiermee open je de betaalpagina.',
-      acceptPrivacy: 'Accepteer het privacybeleid om verder te gaan.'
+      acceptPrivacy: 'Accepteer het privacybeleid om verder te gaan.',
+      closedLead: 'De online verkoop is gesloten',
+      closedMain: 'Tickets aan de deur op de dag zelf',
+      closedHint: 'Online kun je geen tickets meer kopen. Je koopt ze aan de deur op de dag van het evenement.'
     },
     de: {
       openMenu: 'Menü öffnen',
       closeMenu: 'Menü schließen',
       ready: 'Fertig. Hier geht es zur Ticketkasse.',
-      acceptPrivacy: 'Akzeptiere die Datenschutzerklärung, um fortzufahren.'
+      acceptPrivacy: 'Akzeptiere die Datenschutzerklärung, um fortzufahren.',
+      closedLead: 'Der Online-Verkauf ist beendet',
+      closedMain: 'Tickets an der Abendkasse am Veranstaltungstag',
+      closedHint: 'Online kannst du keine Tickets mehr kaufen. Du bekommst sie am Veranstaltungstag an der Abendkasse.'
     },
     fr: {
       openMenu: 'Ouvrir le menu',
       closeMenu: 'Fermer le menu',
       ready: 'C’est prêt. Ce bouton ouvre la page de paiement.',
-      acceptPrivacy: 'Acceptez la politique de confidentialité pour continuer.'
+      acceptPrivacy: 'Acceptez la politique de confidentialité pour continuer.',
+      closedLead: 'La vente en ligne est terminée',
+      closedMain: 'Billets à l’entrée le jour de l’événement',
+      closedHint: 'Les billets ne sont plus en vente en ligne. Vous pouvez les acheter à l’entrée le jour de l’événement.'
     }
   };
   var t = TEXT[document.documentElement.lang] || TEXT.en;
@@ -101,6 +113,27 @@
   /* ---------- 3. Privacy Policy gate on ticket buttons ----------- */
   (function ticketGate() {
     var buttons = document.querySelectorAll('[data-checkout]');
+    /* Online sales stop at 20:00 (Amsterdam) the day before the event. */
+    var SALES_CLOSE = Date.parse('2026-11-05T20:00:00+01:00');
+
+    function closeSales() {
+      var lead = document.querySelector('.ticket-banner__lead');
+      var main = document.querySelector('.ticket-banner__main');
+      if (lead) lead.textContent = t.closedLead;
+      if (main) main.textContent = t.closedMain;
+      buttons.forEach(function (btn) {
+        btn.disabled = true;
+        var box = document.getElementById(btn.getAttribute('aria-controls'));
+        var hint = box && document.getElementById(box.getAttribute('aria-describedby'));
+        if (box) box.closest('.privacy-row').style.display = 'none';
+        if (hint) hint.textContent = t.closedHint;
+      });
+    }
+
+    if (Date.now() >= SALES_CLOSE) {
+      closeSales();
+      return;
+    }
 
     buttons.forEach(function (btn) {
       var boxId = btn.getAttribute('aria-controls');
@@ -124,6 +157,10 @@
 
       btn.addEventListener('click', function () {
         if (btn.disabled) return;
+        if (Date.now() >= SALES_CLOSE) {
+          closeSales();
+          return;
+        }
         var url = btn.getAttribute('data-checkout-url');
         if (url && url !== '#') {
           window.location.href = url;
